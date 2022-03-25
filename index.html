@@ -10,16 +10,26 @@
 </head>
 <body>
     <header>
-        <h1>THE <span>WEATHER</span> DASHBOARD</h1>
+        <img src="./assets/images/sun-svgrepo-com.svg">
+        <h1>
+            
+            THE <span>WEATHER</span> DASHBOARD
+        </h1>
         <p>An application by <span>TH</span></p>
     </header>
+
     <main>
         <div class="search-card">
-            <form>
-                <label for="search-form" class="form-label">Search for a <span>city</span>:</label>
-                <input type="text" name="search-form" id="search-form" autofocus="true" autocomplete="off" placeholder="Toronto, Ontario"/>
+            <form id="search-form">
+                <label for="city" class="form-label">Search for a <span>CITY</span>:</label>
+                <input type="text" name="city" id="city" autofocus="true" autocomplete="off" placeholder="Toronto, Ontario"/>
+                <button type="submit" class="btn">Let's Go</button>
             </form> 
         </div>
     </main>
+
+
+
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>

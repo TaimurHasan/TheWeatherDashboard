@@ -1,13 +1,24 @@
 :root {
     --primary-color: rgb(196, 196, 21);
     --secondary-color: #21262b;
+    --tertiary-color: rgb(22, 20, 20);
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
     background-color: #1c262e;
     color: white;
-    font-family: 'Manrope', sans-serif;
     padding: 0 50px;
+    font-family: 'Share Tech', sans-serif;
+}
+
+img {
+    height:5%;
+    width: 5%;
+    margin-right: 20px;
 }
 
 header {
@@ -15,11 +26,14 @@ header {
     justify-content: space-around;
     align-items: center;
     font-size: 20px;
+    font-family: 'Manrope', sans-serif;
+    border-bottom: 2px solid white;
+    margin-bottom: 50px;
 }
 
 header h1 {
     font-size: 36px;
-    flex: 1;
+    flex: 1 70%;
 }
 
 header h1 span{
@@ -48,10 +62,8 @@ span {
     border: 2px solid whitesmoke;
     border-radius: 5px;
     background-color: var(--secondary-color);
-    width: 20%;
-    height: 100px;
+    width: 40%;
     font-size: 24px;
-    font-family: 'Inter', sans-serif;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -71,14 +83,28 @@ span {
 }
 
 .search-card input {
-    width: 90%;
+    width: 95%;
     border-radius: 15px;
-    height: 40px;
-    margin-top: 10px;
+    margin: 10px 0;
     padding: 5px 20px;
     font-size: 18px;
     outline: none;
     border: 2px solid var(--secondary-color);
-    background-color: rgb(22, 20, 20);
+    background-color: var(--tertiary-color);
     color: var(--primary-color);
+}
+
+.btn {
+    padding: 10px;
+    border: none;
+    background-color: var(--tertiary-color);
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+}
+
+.btn:hover {
+    cursor: pointer;
+    color: black;
+    background-color: var(--primary-color);
 }
