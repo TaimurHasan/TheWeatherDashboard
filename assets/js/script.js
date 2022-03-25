@@ -8,7 +8,7 @@ var formHandler = function (event) {
 }
 
 var getWeather = function (city) {
-    apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+    apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=";
     console.log(apiUrl);
 }
 
