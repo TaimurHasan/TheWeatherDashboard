@@ -1,5 +1,5 @@
 :root {
-    --primary-color: rgb(196, 196, 21);
+    --primary-color: rgb(214, 205, 69);
     --secondary-color: #21262b;
     --tertiary-color: rgb(22, 20, 20);
 }
@@ -57,9 +57,11 @@ span {
 }
 
 .container {
-    margin: 20px 0 0 100px;
-    padding: 10px;
+    padding: 25px 10px;
+    width: 100%;
 }
+
+
 .search-card {
     padding: 20px 10px;
     border: 2px solid whitesmoke;
@@ -112,10 +114,33 @@ span {
     background-color: var(--tertiary-color);
 }
 
+.weather {
+    display: flex;
+    justify-content: space-between;
+}
 .current-weather {
     padding: 20px 40px;
-    border: 2px solid whitesmoke;
+    border: 2px solid var(--primary-color);
     border-radius: 5px;
-    background-color: var(--secondary-color);
+    background-color: rgb(214, 205, 69);
     font-size: 18px;
+    margin-bottom: 20px;
+    width: 100%;
+    color: #1c262e;
+}
+
+
+.forecast {
+    font-size: 14px;
+}
+
+ul {
+    list-style: none;
+    font-size: 18px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
 }

@@ -10,7 +10,7 @@ var formHandler = function (event) {
     // cleanup any previous searches
     weatherDash.innerHTML = "";
     
-    var cityInput = document.querySelector("input[id='city']").value.split(" ").join("");
+    var cityInput = document.querySelector("input[id='city']").value;
     getCityDetails(cityInput);
 }
 
@@ -52,8 +52,7 @@ var displayCurrent = function(data, cityName, country) {
     var fullDate = getDate(theTime);
 
     var weatherDivEl = document.createElement("div");
-    weatherDivEl.className = "col-8 current-weather";
-    weatherDivEl.setAttribute("id", "current-weather");
+    weatherDivEl.className = "col-12 current-weather";
 
     var weatherHeadEl = document.createElement("h1");
     weatherHeadEl.textContent = cityName + ", " + country + " - " + fullDate;
@@ -65,12 +64,26 @@ var displayCurrent = function(data, cityName, country) {
 
 // function to display five-day forecast fetched from api onto display
 var displayForecast = function(data) {
-    console.log(data);
+    for (i=1; i < 6; i++) {
+        theTime = new Date(data.daily[i].dt*1000);
+        fullDate = getDate(theTime);
+        console.log(fullDate);
+
+        var weatherDivEl = document.createElement("div");
+        weatherDivEl.className = "col-2 current-weather forecast";
+
+        var weatherHeadEl = document.createElement("h1");
+        weatherHeadEl.textContent = fullDate;
+
+        weatherDivEl.appendChild(weatherHeadEl);
+        weatherDash.appendChild(weatherDivEl);
+        displayWeather(data.daily[i], weatherDivEl);
+    }
 }
 
 // function to take the time and turn it into readable date
 var getDate = function(theTime) {
-    month = theTime.getMonth();
+    month = theTime.getMonth() + 1;
     date = theTime.getDate();
     year = theTime.getFullYear();
 
@@ -85,17 +98,19 @@ var getIcon = function(iconId) {
 
 var displayWeather = function (datastatus, selected) {
     console.log(datastatus.temp);
-    
     // get icon for weather
     var icon = getIcon(datastatus.weather[0].icon);
-    console.log(icon);
 
     var iconEl = document.createElement("img");
     iconEl.setAttribute("src", icon);
     selected.appendChild(iconEl);
 
     // required metrics
-    var temp = "Temp: " + Math.round(datastatus.temp) + '\xB0';
+    if(isNaN(datastatus.temp)) {
+        var temp = "Temp: " + Math.round(datastatus.temp.day) + '\xB0';
+    } else {
+        var temp = "Temp: " + Math.round(datastatus.temp) + '\xB0';
+    };
     var wind = "Wind: " + datastatus.wind_speed + " MPH";
     var humidity = "Humidity: " + datastatus.humidity + "%";
     var metrics = [temp, wind, humidity];
