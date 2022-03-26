@@ -6,6 +6,10 @@ var weatherDash = document.querySelector("#weather");
 // handle form input and send through api functions
 var formHandler = function (event) {
     event.preventDefault();
+
+    // cleanup any previous searches
+    weatherDash.innerHTML = "";
+    
     var cityInput = document.querySelector("input[id='city']").value.split(" ").join("");
     getCityDetails(cityInput);
 }
@@ -36,18 +40,16 @@ var getWeather = function (lat, lon, cityName, country) {
             response.json()
             .then(function(data){
                 displayCurrent(data, cityName, country);
+                displayForecast(data);
             })
         })
 }
 
-// function to display weather fetched from api onto display
+// function to display current weather fetched from api onto display
 var displayCurrent = function(data, cityName, country) {
-    console.log(data);
-
     // get full date
     var theTime = new Date(data.current.dt * 1000);
     var fullDate = getDate(theTime);
-
 
     var weatherDivEl = document.createElement("div");
     weatherDivEl.className = "col-8 current-weather";
@@ -58,8 +60,13 @@ var displayCurrent = function(data, cityName, country) {
 
     weatherDivEl.appendChild(weatherHeadEl);
     weatherDash.appendChild(weatherDivEl);
-    displayWeather(data, weatherDivEl);
+    displayWeather(data.current, weatherDivEl);
 };
+
+// function to display five-day forecast fetched from api onto display
+var displayForecast = function(data) {
+    console.log(data);
+}
 
 // function to take the time and turn it into readable date
 var getDate = function(theTime) {
@@ -71,13 +78,27 @@ var getDate = function(theTime) {
     return fullDate;
 }
 
-var displayWeather = function (data, selected) {
-    console.log(data.current.temp);
+var getIcon = function(iconId) {
+    iconUrl = "http://openweathermap.org/img/wn/" + iconId + "@2x.png";
+    return iconUrl;
+};
+
+var displayWeather = function (datastatus, selected) {
+    console.log(datastatus.temp);
     
+    // get icon for weather
+    var icon = getIcon(datastatus.weather[0].icon);
+    console.log(icon);
+
+    var iconEl = document.createElement("img");
+    iconEl.setAttribute("src", icon);
+    selected.appendChild(iconEl);
+
     // required metrics
-    var temp = "Temp: " + Math.round(data.current.temp) + '\xB0';
-    var wind = "Wind: " + data.current.wind_speed + " MPH";
-    var metrics = [temp, wind];
+    var temp = "Temp: " + Math.round(datastatus.temp) + '\xB0';
+    var wind = "Wind: " + datastatus.wind_speed + " MPH";
+    var humidity = "Humidity: " + datastatus.humidity + "%";
+    var metrics = [temp, wind, humidity];
     
     var listEl = document.createElement("ul");
     
