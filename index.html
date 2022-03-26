@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap-grid.min.css" integrity="sha512-Xj2sd25G+JgJYwo0cvlGWXoUekbLg5WvW+VbItCMdXrDoZRWcS/d40ieFHu77vP0dF5PK+cX6TIp+DsPfZomhw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Manrope:wght@200;300&family=Share+Tech&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>The Weather Dashboard</title>
@@ -18,16 +19,25 @@
         <p>An application by <span>TH</span></p>
     </header>
 
-    <main>
-        <div class="search-card">
-            <form id="search-form">
-                <label for="city" class="form-label">Search for a <span>CITY</span>:</label>
-                <input type="text" name="city" id="city" autofocus="true" autocomplete="on" placeholder="Toronto, Canada"/>
-                <button type="submit" class="btn">Let's Go</button>
-            </form> 
+    <main class="container main">
+        <div class="row">
+            <div class="col-5 mr-5 search-card">
+                <form id="search-form">
+                    <label for="city" class="form-label">Search for a <span>CITY</span>:</label>
+                    <input type="text" name="city" id="city" autofocus="true" autocomplete="on" placeholder="Toronto"/>
+                    <button type="submit" class="btn">Let's Party</button>
+                </form> 
+            </div>
+            <div class="col-6 search-history-card">
+                <h2 class="mt-1">Search History:</h2>
+            </div>
         </div>
     </main>
+    <section class="weather container">
+        <div class="row" id="weather">
 
+        </div>
+    </section>
 
 
     <script src="./assets/js/script.js"></script>

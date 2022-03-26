@@ -11,14 +11,13 @@
 body {
     background-color: #1c262e;
     color: white;
-    padding: 0 50px;
     font-family: 'Share Tech', sans-serif;
 }
 
 img {
     height:5%;
     width: 5%;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 header {
@@ -29,6 +28,7 @@ header {
     font-family: 'Manrope', sans-serif;
     border-bottom: 2px solid white;
     margin-bottom: 50px;
+    padding: 0 50px;
 }
 
 header h1 {
@@ -56,18 +56,17 @@ span {
     color: var(--primary-color);
 }
 
+.container {
+    margin: 20px 0 0 100px;
+    padding: 10px;
+}
 .search-card {
-    margin: 20px 0 0 20px;
-    padding: 20px 20px;
+    padding: 20px 10px;
     border: 2px solid whitesmoke;
     border-radius: 5px;
     background-color: var(--secondary-color);
-    width: 40%;
     font-size: 24px;
     font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .search-card:hover {
@@ -83,28 +82,40 @@ span {
 }
 
 .search-card input {
-    width: 95%;
+    width: 90%;
+    height: 50px;
     border-radius: 15px;
     margin: 10px 0;
-    padding: 5px 20px;
+    padding: 5px 50px;
     font-size: 18px;
     outline: none;
     border: 2px solid var(--secondary-color);
     background-color: var(--tertiary-color);
     color: var(--primary-color);
+    text-align: center;
 }
 
 .btn {
-    padding: 10px;
+    width: 90%;
+    padding: 15px;
     border: none;
-    background-color: var(--tertiary-color);
+    background-color: var(--primary-color);
     border-radius: 10px;
-    font-size: 18px;
-    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
 }
 
 .btn:hover {
     cursor: pointer;
-    color: black;
-    background-color: var(--primary-color);
+    color: white;
+    background-color: var(--tertiary-color);
+}
+
+.current-weather {
+    padding: 20px 40px;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    font-size: 18px;
 }
