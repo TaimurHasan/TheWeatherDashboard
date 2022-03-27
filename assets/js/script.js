@@ -1,7 +1,11 @@
 var formEl = document.querySelector("#search-form");
 var apiKey = "6d797a2c3d8a01c9b09004f544fc4746";
-var searchHistory = [];
 var weatherDash = document.querySelector("#weather");
+
+// variables for search history
+var searchHistory = [];
+var historyDisplay = document.querySelector("#history-display");
+var historyBtn = document.querySelector(".btn history-btn");
 
 // handle form input and send through api functions
 var formHandler = function (event) {
@@ -27,6 +31,7 @@ var getCityDetails = function (city) {
                 var cityName = data.name;
                 var country = data.sys.country;
                 getWeather(lat, lon, cityName, country);
+                saveHistory(cityName, country);
             })
         })
 }
@@ -67,7 +72,6 @@ var displayForecast = function(data) {
     for (i=1; i < 6; i++) {
         theTime = new Date(data.daily[i].dt*1000);
         fullDate = getDate(theTime);
-        console.log(fullDate);
 
         var weatherDivEl = document.createElement("div");
         weatherDivEl.className = "col-2 current-weather forecast";
@@ -97,7 +101,6 @@ var getIcon = function(iconId) {
 };
 
 var displayWeather = function (datastatus, selected) {
-    console.log(datastatus.temp);
     // get icon for weather
     var icon = getIcon(datastatus.weather[0].icon);
 
@@ -128,4 +131,34 @@ var displayWeather = function (datastatus, selected) {
 
 }
 
+var saveHistory = function (cityName, country) {
+    var history = cityName + ", " + country;
+
+    // check if searched city name and country already exist in saved history to prevent duplicates
+    if(searchHistory.indexOf(history) === -1) {
+        searchHistory.push(history);
+    };
+
+    localStorage.setItem("city", JSON.stringify(searchHistory));
+    displayHistory(searchHistory);
+};
+
+var displayHistory = function (searchHistory) {
+    // clear history display
+    historyDisplay.innerHTML = "";
+    for (var i = 0; i < searchHistory.length; i++) {
+        var historyBtnEl = document.createElement("button");
+        historyBtnEl.textContent = searchHistory[i];
+        historyBtnEl.className = "btn history-btn";
+        historyDisplay.appendChild(historyBtnEl);
+    };
+}
+
+var loadHistory = function () {
+    searchHistory = JSON.parse(localStorage.getItem("city"));
+    displayHistory(searchHistory);
+};
+
 formEl.addEventListener("submit", formHandler)
+
+loadHistory();

@@ -144,3 +144,15 @@ ul {
     align-items: flex-start;
     padding: 0;
 }
+
+.history {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.history-btn {
+    margin: 5px;
+    width: auto;
+}
