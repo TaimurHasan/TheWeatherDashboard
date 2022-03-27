@@ -5,7 +5,6 @@ var weatherDash = document.querySelector("#weather");
 // variables for search history
 var searchHistory = [];
 var historyDisplay = document.querySelector("#history-display");
-var historyBtn = document.querySelector(".btn history-btn");
 
 // handle form input and send through api functions
 var formHandler = function (event) {
@@ -16,6 +15,12 @@ var formHandler = function (event) {
     
     var cityInput = document.querySelector("input[id='city']").value;
     getCityDetails(cityInput);
+}
+
+var buttonHandler = function (event) {
+    weatherDash.innerHTML = "";
+    selectedBtn = event.target.textContent;
+    getCityDetails(selectedBtn);
 }
 
 // call on api specifically to get latitude and longitude from searched city name + save city name and country
@@ -150,15 +155,23 @@ var displayHistory = function (searchHistory) {
         var historyBtnEl = document.createElement("button");
         historyBtnEl.textContent = searchHistory[i];
         historyBtnEl.className = "btn history-btn";
+        historyBtnEl.setAttribute("id", "history-btn");
+        historyBtnEl.addEventListener("click", buttonHandler)
         historyDisplay.appendChild(historyBtnEl);
     };
 }
 
 var loadHistory = function () {
     searchHistory = JSON.parse(localStorage.getItem("city"));
+    
+    if(!searchHistory) {
+        searchHistory = [];
+    }
+
     displayHistory(searchHistory);
 };
 
-formEl.addEventListener("submit", formHandler)
+formEl.addEventListener("submit", formHandler);
 
 loadHistory();
+
