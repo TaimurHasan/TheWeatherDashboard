@@ -114,6 +114,11 @@ span {
     background-color: var(--tertiary-color);
 }
 
+.clear {
+    width: auto;
+    padding: 5px;
+    margin-left: 20px;
+}
 .weather {
     display: flex;
     justify-content: space-between;
@@ -323,7 +328,7 @@ ul {
     .current-weather h1 {
         text-align: center;
     }
-    
+
     .current-weather ul {
         font-size: 20px;
     }

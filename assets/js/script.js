@@ -208,3 +208,9 @@ formEl.addEventListener("submit", formHandler);
 
 loadHistory();
 
+// add clear storage event listener to clear button
+var clearButton = document.querySelector("#clear-button");
+clearButton.addEventListener("click", function(searchHistory) {
+    localStorage.clear();
+    window.location.reload();
+})
