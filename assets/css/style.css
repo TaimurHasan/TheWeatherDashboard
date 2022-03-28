@@ -196,3 +196,146 @@ ul {
 .severe {
     background-color: rgb(131, 12, 12);
 }
+
+@media screen and (max-width: 975px) {
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 32px;
+        font-family: 'Manrope', sans-serif;
+        border-bottom: 2px solid white;
+        margin-bottom: 50px;
+        padding: 0 50px;
+    }
+
+    .header-img {
+        height:30%;
+        width: 30%;
+        margin: 20px 0 0 0;
+    }
+
+    header h1 {
+        text-align: center;
+        font-size: 50px;
+    }
+
+    header h1 span {
+        font-size: 56px;
+    }
+    .row {
+        margin: 0 auto;
+    }
+
+    .search-card {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    .search-card input, .search-card h2 {
+        font-size: 24px;
+    }
+
+    .search-history-card {
+        margin: 20px 20px 0 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .current-weather {
+        font-size: 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .current-weather ul {
+        font-size: 32px;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .forecast {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    }
+
+    .forecast ul {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 24px;
+    }
+
+    .btn {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    header h1, header h1 span {
+        font-size: 42px;
+    }
+
+    header p {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .forecast {
+        font-size: 28px;
+    }
+
+    .forecast ul {
+        font-size: 28px;
+    }
+    
+    .btn {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+
+    header h1, header h1 span {
+        font-size: 42px;
+    }
+
+    header p {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .current-weather {
+        font-size: 24px;
+    }
+
+    .current-weather h1 {
+        text-align: center;
+    }
+    
+    .current-weather ul {
+        font-size: 20px;
+    }
+    .forecast {
+        font-size: 24px;
+    }
+
+    .forecast ul {
+        font-size: 20px;
+    }
+    
+    .btn {
+        font-size: 20px;
+    }
+}

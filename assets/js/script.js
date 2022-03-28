@@ -37,6 +37,7 @@ var getCityDetails = function (city) {
                     var country = data.sys.country;
                     getWeather(lat, lon, cityName, country);
                     saveHistory(cityName, country);
+                    document.querySelector("input[id='city']").value = cityName + ", " + country;
                 })
             } else {
                 alert("Please enter a valid city name!");
@@ -111,7 +112,7 @@ var displayForecast = function(data) {
         fullDate = getDate(theTime);
 
         var weatherDivEl = document.createElement("div");
-        weatherDivEl.className = "col-2 current-weather forecast";
+        weatherDivEl.className = "col-12 col-lg-2 current-weather forecast";
 
         var weatherHeadEl = document.createElement("h1");
         weatherHeadEl.textContent = fullDate;
