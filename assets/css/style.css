@@ -118,17 +118,28 @@ span {
     display: flex;
     justify-content: space-between;
 }
+
 .current-weather {
     padding: 20px 40px;
-    border: 2px solid var(--primary-color);
+    border: 1px solid var(--primary-color);
     border-radius: 5px;
-    background-color: rgb(214, 205, 69);
-    font-size: 18px;
+    background-color: var(--tertiary-color);
+    font-size: 24px;
     margin-bottom: 20px;
     width: 100%;
-    color: #1c262e;
+    color: white;
+    transition: all 0.3s ease-in-out;
 }
 
+.current-weather:hover {
+    background-color: var(--primary-color);
+    color: #1c262e;
+    border: 1px solid var(--tertiary-color);
+}
+
+.current-weather p {
+    padding: 0 0 0 20px;
+}
 
 .forecast {
     font-size: 14px;
@@ -136,12 +147,18 @@ span {
 
 ul {
     list-style: none;
-    font-size: 18px;
+    font-size: 24px;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    padding: 0 0 0 20px;
+    line-height: 1.5;
+}
+
+.forecast ul {
+    font-size: 18px;
     padding: 0;
 }
 
@@ -155,4 +172,27 @@ ul {
 .history-btn {
     margin: 5px;
     width: auto;
+}
+
+.conditions {
+    color: white;
+    border-radius: 15px;
+    padding: 0 15px;
+
+}
+
+.conditions:hover {
+    border-bottom: none;
+}
+
+.favorable {
+    background-color: rgb(8, 95, 8);
+}
+
+.moderate {
+    background-color: rgb(170, 117, 19);
+}
+
+.severe {
+    background-color: rgb(131, 12, 12);
 }

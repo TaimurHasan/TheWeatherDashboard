@@ -82,9 +82,28 @@ var displayCurrent = function(data, cityName, country) {
 
     weatherDivEl.appendChild(weatherHeadEl);
     weatherDash.appendChild(weatherDivEl);
+
     displayWeather(data.current, weatherDivEl);
+    displayUV(data.current.uvi, weatherDivEl);
 };
 
+var displayUV = function(uv, selected) {
+    var uvi = parseInt(uv).toFixed(2);
+    var uvEl = document.createElement("p");
+    var conditions = "";
+
+    if (uvi <= 2) {
+        conditions = "favorable";
+    } else if (uvi > 2 && uvi <= 6) {
+        conditions = "moderate";
+    } else {
+        conditions = "severe";
+    }
+
+    uvEl.innerHTML = "UV Index: <span class ='conditions " + conditions + "'>" + uvi + "</span>";
+    
+    selected.appendChild(uvEl);
+}
 // function to display five-day forecast fetched from api onto display
 var displayForecast = function(data) {
     for (i=1; i < 6; i++) {
