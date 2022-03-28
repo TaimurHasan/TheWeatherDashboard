@@ -9,7 +9,6 @@ var historyDisplay = document.querySelector("#history-display");
 // handle form input and send through api functions
 var formHandler = function (event) {
     event.preventDefault();
-
     // cleanup any previous searches
     weatherDash.innerHTML = "";
     
@@ -29,16 +28,23 @@ var getCityDetails = function (city) {
     
     fetch(apiUrl)
         .then(function(response) {
-            response.json()
-            .then(function(data) {
-                var lon = data.coord.lon;
-                var lat = data.coord.lat;
-                var cityName = data.name;
-                var country = data.sys.country;
-                getWeather(lat, lon, cityName, country);
-                saveHistory(cityName, country);
-            })
+            if(response.ok) {
+                response.json()
+                .then(function(data) {
+                    var lon = data.coord.lon;
+                    var lat = data.coord.lat;
+                    var cityName = data.name;
+                    var country = data.sys.country;
+                    getWeather(lat, lon, cityName, country);
+                    saveHistory(cityName, country);
+                })
+            } else {
+                alert("Please enter a valid city name!");
+            }
         })
+        .catch (function(error) {
+            alert("There was an error, please try again!");
+        });
 }
 
 //call on onecall api to get weather from latitude and longitude
@@ -47,12 +53,19 @@ var getWeather = function (lat, lon, cityName, country) {
     
     fetch(apiUrl)
         .then(function(response) {
-            response.json()
-            .then(function(data){
-                displayCurrent(data, cityName, country);
-                displayForecast(data);
-            })
+            if(response.ok) {
+                response.json()
+                .then(function(data){
+                    displayCurrent(data, cityName, country);
+                    displayForecast(data);
+                })
+            } else {
+                alert("There was an error, please try again!");
+            }
         })
+        .catch (function(error) {
+            alert("There was an error, please try again!");
+        });
 }
 
 // function to display current weather fetched from api onto display
