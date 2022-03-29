@@ -37,7 +37,7 @@ var getCityDetails = function (city) {
                     var country = data.sys.country;
                     getWeather(lat, lon, cityName, country);
                     saveHistory(cityName, country);
-                    document.querySelector("input[id='city']").value = cityName + ", " + country;
+                    document.querySelector("input[id='city']").value = "";
                 })
             } else {
                 alert("Please enter a valid city name!");
